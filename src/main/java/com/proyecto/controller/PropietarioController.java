@@ -1,13 +1,12 @@
-package pid.proyecto.controller;
+package com.proyecto.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pid.proyecto.entidad.Departamento;
-import pid.proyecto.entidad.Propietario;
-import pid.proyecto.service.PropietarioService;
-import pid.proyecto.util.AppSettings;
+import com.proyecto.entidad.Departamento;
+import com.proyecto.entidad.Propietario;
+import com.proyecto.service.PropietarioService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/rest/propietario")
-@CrossOrigin(origins =AppSettings.URL_CROSS_ORIGIN)
 
 public class PropietarioController {
 

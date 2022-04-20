@@ -1,4 +1,4 @@
-package pid.proyecto.util;
+package com.proyecto.util;
 
 public class Constantes {
 
@@ -16,5 +16,4 @@ public class Constantes {
 	public static final String MENSAJE_ELI_NO_EXISTE_ID = "No existe el ID que se desea eliminar.";
 	
 	public static final String MENSAJE_DNI_YA_EXISTE = "Ya existe dicho el DNI : ";
-	
 }

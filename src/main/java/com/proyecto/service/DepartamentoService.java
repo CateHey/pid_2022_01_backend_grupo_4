@@ -1,11 +1,9 @@
-package pid.proyecto.service;
+package com.proyecto.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
-import pid.proyecto.entidad.Departamento;
-
+import com.proyecto.entidad.Departamento;
 
 public interface DepartamentoService {
 	public abstract List<Departamento> listaDepartamento();

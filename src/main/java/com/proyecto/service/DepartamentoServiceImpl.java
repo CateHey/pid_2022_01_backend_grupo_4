@@ -1,12 +1,12 @@
-package pid.proyecto.service;
+package com.proyecto.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pid.proyecto.entidad.Departamento;
-import pid.proyecto.repository.DepartamentoRepository;
+import com.proyecto.entidad.Departamento;
+import com.proyecto.repository.DepartamentoRepository;
 
 @Service
 public class DepartamentoServiceImpl implements DepartamentoService{
