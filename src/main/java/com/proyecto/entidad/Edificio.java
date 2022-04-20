@@ -1,4 +1,4 @@
-package pid.proyecto.entidad;
+package com.proyecto.entidad;
 
 import java.util.Date;
 
@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package pid.proyecto.entidad;
+package com.proyecto.entidad;
 
 import java.util.Date;
 
@@ -15,20 +15,32 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "EDIFICIO")
-public class Edificio {
+@Table(name = "DEPARTAMENTO")
+public class Departamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int cod_edi;
+	private int cod_dep;
+	
+	private int metros_dep;
+	
+	private String tel_dep;
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne
+	@JoinColumn(name = "cod_edi")
+	private Edificio edificio;
+	
+	private double pre_dep;
 
-	private String nom_edi;
+	
 
 	
 }

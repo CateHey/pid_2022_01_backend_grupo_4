@@ -1,11 +1,9 @@
-package pid.proyecto.service;
+package com.proyecto.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
-import pid.proyecto.entidad.Edificio;
-
+import com.proyecto.entidad.Edificio;
 
 public interface EdificioService {
 	public abstract List<Edificio> listaEdificio();

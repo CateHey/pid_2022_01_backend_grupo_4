@@ -1,13 +1,12 @@
-package pid.proyecto.service;
+package com.proyecto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pid.proyecto.entidad.Propietario;
-import pid.proyecto.repository.PropietarioRepository;
+import com.proyecto.entidad.Propietario;
+import com.proyecto.repository.PropietarioRepository;
 
 import java.util.List;
-
 
 @Service
 public class PropietarioServiceImpl implements PropietarioService {
