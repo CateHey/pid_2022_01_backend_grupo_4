@@ -1,10 +1,10 @@
-package pid.proyecto.service;
+package com.proyecto.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import pid.proyecto.entidad.Mascota;
+import com.proyecto.entidad.Mascota;
 
 
 public interface MascotaService {

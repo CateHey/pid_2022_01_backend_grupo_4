@@ -1,11 +1,11 @@
-package pid.proyecto.service;
+package com.proyecto.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pid.proyecto.entidad.Mascota;
-import pid.proyecto.repository.MascotaRepository;
+import com.proyecto.entidad.Mascota;
+import com.proyecto.repository.MascotaRepository;
 
 
 @Service

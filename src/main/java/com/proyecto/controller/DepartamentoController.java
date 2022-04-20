@@ -42,13 +42,13 @@ public class DepartamentoController {
 		try {
 			Departamento objSalida = departamentoService.insertaActualizaDepartamento(obj);
 			if (objSalida == null) {
-				salida.put("mensaje", pid.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
 			} else {
-				salida.put("mensaje", pid.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			salida.put("mensaje", pid.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
 		}
 		return ResponseEntity.ok(salida);
 	}

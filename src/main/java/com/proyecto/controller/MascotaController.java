@@ -1,12 +1,12 @@
-package pid.proyecto.controller;
+package com.proyecto.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pid.proyecto.entidad.Mascota;
-import pid.proyecto.service.MascotaService;
-import pid.proyecto.util.AppSettings;
+import com.proyecto.entidad.Mascota;
+import com.proyecto.service.MascotaService;
+import com.proyecto.util.AppSettings;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,13 +36,13 @@ public class MascotaController {
         try {
             Mascota objSalida = mascotaService.insertaActualizaMascota(obj);
             if (objSalida == null) {
-                salida.put("mensaje", pid.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+                salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
             } else {
-                salida.put("mensaje", pid.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+                salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            salida.put("mensaje", pid.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+            salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
         }
         return ResponseEntity.ok(salida);
     }
