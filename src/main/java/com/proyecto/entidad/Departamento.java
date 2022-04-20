@@ -40,6 +40,46 @@ public class Departamento {
 	
 	private double pre_dep;
 
+	public int getCod_dep() {
+		return cod_dep;
+	}
+
+	public void setCod_dep(int cod_dep) {
+		this.cod_dep = cod_dep;
+	}
+
+	public int getMetros_dep() {
+		return metros_dep;
+	}
+
+	public void setMetros_dep(int metros_dep) {
+		this.metros_dep = metros_dep;
+	}
+
+	public String getTel_dep() {
+		return tel_dep;
+	}
+
+	public void setTel_dep(String tel_dep) {
+		this.tel_dep = tel_dep;
+	}
+
+	public Edificio getEdificio() {
+		return edificio;
+	}
+
+	public void setEdificio(Edificio edificio) {
+		this.edificio = edificio;
+	}
+
+	public double getPre_dep() {
+		return pre_dep;
+	}
+
+	public void setPre_dep(double pre_dep) {
+		this.pre_dep = pre_dep;
+	}
+
 	
 
 	

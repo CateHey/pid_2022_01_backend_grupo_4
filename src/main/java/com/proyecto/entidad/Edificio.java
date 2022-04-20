@@ -31,5 +31,21 @@ public class Edificio {
 
 	private String nom_edi;
 
+	public int getCod_edi() {
+		return cod_edi;
+	}
+
+	public void setCod_edi(int cod_edi) {
+		this.cod_edi = cod_edi;
+	}
+
+	public String getNom_edi() {
+		return nom_edi;
+	}
+
+	public void setNom_edi(String nom_edi) {
+		this.nom_edi = nom_edi;
+	}
+
 	
 }
