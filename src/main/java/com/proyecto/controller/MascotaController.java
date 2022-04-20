@@ -4,36 +4,37 @@ package com.proyecto.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.proyecto.entidad.Departamento;
-import com.proyecto.entidad.Propietario;
-import com.proyecto.service.PropietarioService;
+import com.proyecto.entidad.Mascota;
+import com.proyecto.service.MascotaService;
+import com.proyecto.util.AppSettings;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/rest/propietario")
+@RequestMapping("/rest/mascota")
+@CrossOrigin(origins =AppSettings.URL_CROSS_ORIGIN)
 
-public class PropietarioController {
+public class MascotaController {
 
     @Autowired
-    private PropietarioService propietarioService;
+    private MascotaService mascotaService;
 
     @GetMapping
     @ResponseBody
-    public ResponseEntity<List<Propietario>> listaPropietario() {
-        List<Propietario> lst = propietarioService.lstPropiertario();
+    public ResponseEntity<List<Mascota>> listaMascota() {
+        List<Mascota> lst = mascotaService.listaMascota();
 
         return ResponseEntity.ok(lst);
     }
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> insertaPropietario(@RequestBody Propietario obj) {
+    public ResponseEntity<Map<String, Object>> insertaMascota(@RequestBody Mascota obj) {
         Map<String, Object> salida = new HashMap<>();
         try {
-            Propietario objSalida = propietarioService.insertaActualizaPropietario(obj);
+            Mascota objSalida = mascotaService.insertaActualizaMascota(obj);
             if (objSalida == null) {
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
             } else {
