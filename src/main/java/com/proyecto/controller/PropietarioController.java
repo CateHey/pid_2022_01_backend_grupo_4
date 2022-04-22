@@ -8,6 +8,7 @@ import com.proyecto.entidad.Departamento;
 import com.proyecto.entidad.Propietario;
 import com.proyecto.service.PropietarioService;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,7 @@ public class PropietarioController {
     public ResponseEntity<Map<String, Object>> insertaPropietario(@RequestBody Propietario obj) {
         Map<String, Object> salida = new HashMap<>();
         try {
+            obj.setFech_reg_prop(new Date());
             Propietario objSalida = propietarioService.insertaActualizaPropietario(obj);
             if (objSalida == null) {
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
