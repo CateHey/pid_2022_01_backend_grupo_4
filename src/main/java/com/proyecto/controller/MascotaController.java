@@ -8,6 +8,7 @@ import com.proyecto.entidad.Mascota;
 import com.proyecto.service.MascotaService;
 import com.proyecto.util.AppSettings;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,8 +33,9 @@ public class MascotaController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<Map<String, Object>> insertaMascota(@RequestBody Mascota obj) {
-        Map<String, Object> salida = new HashMap<>();
+        Map<String, Object> salida = new HashMap<String,Object>();
         try {
+        	obj.setFec_reg_mas(new Date());
             Mascota objSalida = mascotaService.insertaActualizaMascota(obj);
             if (objSalida == null) {
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
