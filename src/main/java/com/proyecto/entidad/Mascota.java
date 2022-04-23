@@ -36,6 +36,10 @@ public class Mascota {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_prop")
 	private Propietario propietario;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fec_reg_mas;
 
 	public int getCod_mas() {
 		return cod_mas;
@@ -76,9 +80,14 @@ public class Mascota {
 	public void setPropietario(Propietario propietario) {
 		this.propietario = propietario;
 	}
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-	private Date fec_reg_mas;
 
+	public Date getFec_reg_mas() {
+		return fec_reg_mas;
+	}
+
+	public void setFec_reg_mas(Date fec_reg_mas) {
+		this.fec_reg_mas = fec_reg_mas;
+	}
+	
+	
 }

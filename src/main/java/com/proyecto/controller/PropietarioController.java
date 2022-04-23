@@ -34,7 +34,9 @@ public class PropietarioController {
     public ResponseEntity<Map<String, Object>> insertaPropietario(@RequestBody Propietario obj) {
         Map<String, Object> salida = new HashMap<>();
         try {
-            obj.setFech_reg_prop(new Date());
+        	if (obj.getFech_reg_prop() == null) {
+				obj.setFech_reg_prop(new Date());
+			}
             Propietario objSalida = propietarioService.insertaActualizaPropietario(obj);
             if (objSalida == null) {
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
