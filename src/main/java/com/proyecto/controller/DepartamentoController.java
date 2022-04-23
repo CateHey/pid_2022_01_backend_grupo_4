@@ -1,5 +1,6 @@
 package com.proyecto.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,9 @@ public class DepartamentoController {
 	public ResponseEntity<Map<String, Object>> insertaDepartamento(@RequestBody Departamento obj) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
+			if (obj.getFec_reg_dep() == null) {
+				obj.setFec_reg_dep(new Date());
+			}
 			Departamento objSalida = departamentoService.insertaActualizaDepartamento(obj);
 			if (objSalida == null) {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);

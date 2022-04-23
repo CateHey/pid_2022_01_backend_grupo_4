@@ -35,7 +35,9 @@ public class MascotaController {
     public ResponseEntity<Map<String, Object>> insertaMascota(@RequestBody Mascota obj) {
         Map<String, Object> salida = new HashMap<String,Object>();
         try {
-        	obj.setFec_reg_mas(new Date());
+        	if (obj.getFec_reg_mas() == null) {
+				obj.setFec_reg_mas(new Date());
+			}
             Mascota objSalida = mascotaService.insertaActualizaMascota(obj);
             if (objSalida == null) {
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
