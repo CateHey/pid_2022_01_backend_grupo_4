@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/rest/mascota")
-@CrossOrigin(origins =AppSettings.URL_CROSS_ORIGIN)
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class MascotaController {
 

@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/rest/propietario")
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class PropietarioController {
 
     @Autowired

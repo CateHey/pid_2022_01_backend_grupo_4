@@ -19,7 +19,7 @@ import com.proyecto.service.EdificioService;
 
 @RestController
 @RequestMapping("/rest/edificio")
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EdificioController {
 	
 	@Autowired
