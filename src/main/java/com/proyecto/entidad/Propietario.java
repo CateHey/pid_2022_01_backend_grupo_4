@@ -27,7 +27,8 @@ public class Propietario {
 	@JoinColumn(name = "cod_dep")
 	private Departamento departamento;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone="America/Lima")
+	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fech_reg_prop;
 	
