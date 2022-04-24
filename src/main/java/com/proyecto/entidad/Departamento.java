@@ -31,6 +31,8 @@ public class Departamento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cod_dep;
 	
+	private String num_dep;
+	
 	private int metros_dep;
 	
 	private String tel_dep;
@@ -42,7 +44,8 @@ public class Departamento {
 	
 	private double pre_dep;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone="America/Lima")
+	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fec_reg_dep;
 
@@ -104,6 +107,16 @@ public class Departamento {
 
 	public void setFec_reg_dep(Date fec_reg_dep) {
 		this.fec_reg_dep = fec_reg_dep;
+	}
+
+
+	public String getNum_dep() {
+		return num_dep;
+	}
+
+
+	public void setNum_dep(String num_dep) {
+		this.num_dep = num_dep;
 	}
 	
 	

@@ -23,7 +23,7 @@ import com.proyecto.service.DepartamentoService;
 
 @RestController
 @RequestMapping("/rest/departamento")
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DepartamentoController {
 	
 	@Autowired(required = false)
