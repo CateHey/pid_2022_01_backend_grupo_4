@@ -1,5 +1,6 @@
 package com.proyecto.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class VisitaController {
 	public ResponseEntity<Map<String, Object>> insertaVisita(@RequestBody Visita obj){
 		Map<String, Object> salida = new HashMap<>();
 		try {
+			obj.setFech_vis(new Date());
 			Visita objSalida = visitaService.insertaActualizaVisita(obj);
 			if(objSalida == null) {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
