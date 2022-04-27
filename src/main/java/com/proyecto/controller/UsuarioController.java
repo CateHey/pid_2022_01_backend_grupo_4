@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import com.proyecto.entidad.Usuario;
 import com.proyecto.service.UsuarioService;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
