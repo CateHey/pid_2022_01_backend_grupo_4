@@ -27,6 +27,7 @@ public class UsuarioController {
             if (objSalida.size() == 0) {
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_LOGIN_NOVALIDO);
             } else {
+            	salida.put("usuario", objSalida.get(0));
                 salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_LOGIN_EXITO);
             }
         } catch (Exception e) {
