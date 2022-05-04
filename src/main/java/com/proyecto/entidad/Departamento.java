@@ -49,6 +49,18 @@ public class Departamento {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fec_reg_dep;
 
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cod_usu")
+	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public int getCod_dep() {
 		return cod_dep;

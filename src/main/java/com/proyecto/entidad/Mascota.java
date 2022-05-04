@@ -41,6 +41,11 @@ public class Mascota {
 	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fec_reg_mas;
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cod_usu")
+	private Usuario usuario;
 
 	public int getCod_mas() {
 		return cod_mas;
@@ -88,6 +93,14 @@ public class Mascota {
 
 	public void setFec_reg_mas(Date fec_reg_mas) {
 		this.fec_reg_mas = fec_reg_mas;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
