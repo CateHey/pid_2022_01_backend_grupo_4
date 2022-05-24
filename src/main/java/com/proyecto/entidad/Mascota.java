@@ -29,7 +29,8 @@ public class Mascota {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cod_mas;
 	private String nom_mas;
-  private String raza_mas;
+	private String raza_mas;
+	private String tipo_mas;
 
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
