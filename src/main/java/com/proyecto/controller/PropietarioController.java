@@ -29,6 +29,8 @@ public class PropietarioController {
         return ResponseEntity.ok(lst);
     }
 
+    
+    
     @PostMapping
     @ResponseBody
     public ResponseEntity<Map<String, Object>> insertaPropietario(@RequestBody Propietario obj) {
