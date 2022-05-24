@@ -49,59 +49,61 @@ public class Mascota {
 	private Usuario usuario;
 
 	public int getCod_mas() {
-        return cod_mas;
-    }
+		return cod_mas;
+	}
 
-    public void setCod_mas(int cod_mas) {
-        this.cod_mas = cod_mas;
-    }
+	public void setCod_mas(int cod_mas) {
+		this.cod_mas = cod_mas;
+	}
 
-    public String getNom_mas() {
-        return nom_mas;
-    }
+	public String getNom_mas() {
+		return nom_mas;
+	}
 
-    public void setNom_mas(String nom_mas) {
-        this.nom_mas = nom_mas;
-    }
+	public void setNom_mas(String nom_mas) {
+		this.nom_mas = nom_mas;
+	}
 
-    public String getRaza_mas() {
-        return raza_mas;
-    }
+	public String getRaza_mas() {
+		return raza_mas;
+	}
 
-    public void setRaza_mas(String raza_mas) {
-        this.raza_mas = raza_mas;
-    }
-  
+	public void setRaza_mas(String raza_mas) {
+		this.raza_mas = raza_mas;
+	}
+
 	public String getTipo_mas() {
-        return tipo_mas;
-    }
+		return tipo_mas;
+	}
 
-    public void setTipo_mas(String tipo_mas) {
-        this.tipo_mas = tipo_mas;
-    }
+	public void setTipo_mas(String tipo_mas) {
+		this.tipo_mas = tipo_mas;
+	}
 
-    public Propietario getPropietario() {
-        return propietario;
-    }
+	public Propietario getPropietario() {
+		return propietario;
+	}
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
-    }
+	public void setPropietario(Propietario propietario) {
+		this.propietario = propietario;
+	}
 
-    public Date getFec_reg_mas() {
-        return fec_reg_mas;
-    }
+	public Date getFec_reg_mas() {
+		return fec_reg_mas;
+	}
 
-    public void setFec_reg_mas(Date fec_reg_mas) {
-        this.fec_reg_mas = fec_reg_mas;
-    }
+	public void setFec_reg_mas(Date fec_reg_mas) {
+		this.fec_reg_mas = fec_reg_mas;
+	}
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	
 	
 }
