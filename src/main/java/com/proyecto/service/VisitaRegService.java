@@ -9,5 +9,6 @@ public interface VisitaRegService {
 	
 	public abstract List<VisitaReg> listaVisitaReg();
 	public abstract VisitaReg insertaActualizaVisitaReg(VisitaReg obj);
+	public abstract List<VisitaReg> listaVisitaPorNombreDniEstado(String nom_vis, String dni_vis, int estado_visreg);
 
 }

@@ -23,6 +23,9 @@ public class VisitaRegServiceImpl implements VisitaRegService{
 	public VisitaReg insertaActualizaVisitaReg(VisitaReg obj) {
 		return repository.save(obj);
 	}
-	
-	
+
+	@Override
+	public List<VisitaReg> listaVisitaPorNombreDniEstado(String nom_vis, String dni_vis, int estado_visreg) {
+		return repository.listaVisitaPorNombreDniEstado(nom_vis, dni_vis, estado_visreg);
+	}
 }
