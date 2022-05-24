@@ -29,8 +29,8 @@ public class Mascota {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cod_mas;
 	private String nom_mas;
-    private String raza_mas;
-	private String tipo_mas;
+  private String raza_mas;
+
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -70,8 +70,8 @@ public class Mascota {
     public void setRaza_mas(String raza_mas) {
         this.raza_mas = raza_mas;
     }
-
-    public String getTipo_mas() {
+  
+	public String getTipo_mas() {
         return tipo_mas;
     }
 
