@@ -35,6 +35,7 @@ public class VisitaController {
 		return ResponseEntity.ok(lst);
 	}
 	
+	
 	@PostMapping
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> insertaVisita(@RequestBody Visita obj){

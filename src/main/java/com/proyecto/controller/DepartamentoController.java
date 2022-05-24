@@ -36,6 +36,7 @@ public class DepartamentoController {
 		return ResponseEntity.ok(lista);
 	}
 	
+	
 	@PostMapping
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> insertaDepartamento(@RequestBody Departamento obj) {
