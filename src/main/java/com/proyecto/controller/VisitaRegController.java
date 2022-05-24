@@ -36,7 +36,7 @@ public class VisitaRegController {
 	public ResponseEntity<Map<String, Object>> insertaVisitaReg(@RequestBody VisitaReg obj){
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			obj.setFech_ingr_visreg(new Date());
+			//obj.setFech_ingr_visreg(new Date());
 			obj.setEstado_visreg(0);
 			VisitaReg objSalida = visitaregService.insertaActualizaVisitaReg(obj);
 			if(objSalida == null) {
