@@ -16,9 +16,11 @@ import com.proyecto.util.AppSettings;
 
 @RestController
 @RequestMapping("/rest/visitareg")
-@CrossOrigin(origins =AppSettings.URL_CROSS_ORIGIN)
+@CrossOrigin(origins = AppSettings.URL_CROSS_ORIGIN)
 public class VisitaRegController {
-	
+
+
+
 	@Autowired
 	private VisitaRegService visitaregService;
 	
@@ -53,12 +55,14 @@ public class VisitaRegController {
 	@GetMapping("/listaVisitaConParametros")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> listaVisitaPorDNINombreEstado(
+
 			@RequestParam(name = "nombre", required = false, defaultValue = "") String nom_vis,
 			@RequestParam(name = "dni", required = false, defaultValue = "") String dni_vis,
-			@RequestParam(name = "estado", required = true, defaultValue = "1") int estado_visreg) {
+			@RequestParam(name = "estado", required = false, defaultValue = "-1") int estado_visreg
+	) {
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			List<VisitaReg> lista = visitaregService.listaVisitaPorNombreDniEstado(nom_vis, dni_vis, estado_visreg);
+			List<VisitaReg> lista = visitaregService.listaVisitaPorNombreDniEstado("%"+nom_vis+"%", dni_vis, estado_visreg);
 			if (CollectionUtils.isEmpty(lista)) {
 				salida.put("mensaje", "No existen datos para mostrar");
 			}else {
@@ -67,7 +71,7 @@ public class VisitaRegController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_EXITO);
 		}
 		return ResponseEntity.ok(salida);
 	}
