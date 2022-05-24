@@ -22,5 +22,9 @@ public class VisitaServiceImpl implements VisitaService{
 	public List<Visita> listaVisita(){
 		return repository.findAll();
 	}
+	@Override
+	public List<Visita> listaVisitaPorDni(String dni_vis) {
+		return repository.listaVisitaPorDni(dni_vis);
+	}
 	
 }

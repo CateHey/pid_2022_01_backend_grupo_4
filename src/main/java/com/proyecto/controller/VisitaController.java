@@ -7,15 +7,18 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.entidad.Visita;
+import com.proyecto.entidad.VisitaReg;
 import com.proyecto.service.VisitaService;
 import com.proyecto.util.AppSettings;
 
@@ -51,6 +54,27 @@ public class VisitaController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+		}
+		return ResponseEntity.ok(salida);
+	}
+	
+	@GetMapping("/listaVisitaPorDni")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> listaVisitaPorDNI(
+	@RequestParam(name = "dni_vis", required = false, defaultValue = "") String dni_vis	) 
+	{
+		Map<String, Object> salida = new HashMap<>();
+		try {
+			List<Visita> lista = visitaService.listaVisitaPorDni(dni_vis);
+			if (CollectionUtils.isEmpty(lista)) {
+				salida.put("mensaje", "No existen datos para mostrar");
+			}else {
+				salida.put("lista", lista);
+				salida.put("mensaje", "Existen " + lista.size() + " elementos para mostrar");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_EXITO);
 		}
 		return ResponseEntity.ok(salida);
 	}
