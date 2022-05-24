@@ -29,7 +29,7 @@ public class Mascota {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cod_mas;
 	private String nom_mas;
-	private int edad_mas;
+	private String raza_mas;
 	private String tipo_mas;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -63,15 +63,16 @@ public class Mascota {
         this.nom_mas = nom_mas;
     }
 
-    public int getEdad_mas() {
-        return edad_mas;
-    }
+    
+    public String getRaza_mas() {
+		return raza_mas;
+	}
 
-    public void setEdad_mas(int edad_mas) {
-        this.edad_mas = edad_mas;
-    }
+	public void setRaza_mas(String raza_mas) {
+		this.raza_mas = raza_mas;
+	}
 
-    public String getTipo_mas() {
+	public String getTipo_mas() {
         return tipo_mas;
     }
 
