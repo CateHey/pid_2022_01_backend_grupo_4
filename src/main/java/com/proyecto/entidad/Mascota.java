@@ -38,8 +38,7 @@ public class Mascota {
 	@JoinColumn(name = "cod_prop")
 	private Propietario propietario;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone="America/Lima")
-	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fec_reg_mas;
 	

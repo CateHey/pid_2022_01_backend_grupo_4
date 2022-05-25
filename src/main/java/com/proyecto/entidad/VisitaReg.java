@@ -33,13 +33,11 @@ public class VisitaReg {
 	
 	private String comentario; 
 	
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone="America/Lima")
-	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fech_ingr_visreg;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone="America/Lima")
-	//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fech_sal_visreg;
 	

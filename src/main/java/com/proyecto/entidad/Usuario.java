@@ -21,7 +21,7 @@ public class Usuario {
 	private String email_usu;
 	private String pass_usu;
 
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone="America/Lima")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fech_reg_usu;
 
