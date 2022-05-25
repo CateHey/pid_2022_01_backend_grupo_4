@@ -20,7 +20,7 @@ public class Constantes {
 	public static final String MENSAJE_LOGIN_NOVALIDO = "Usuario y/o contraseña incorrecto";
 	public static final String MENSAJE_LOGIN_ERROR = "Error de ingreso al sistema";
 	public static final String MENSAJE_LOGIN_EXITO = "";
-	public static final String MENSAJE_CONSULTA_EXITO = "No se encontro ningun registro";
+	public static final String MENSAJE_CONSULTA_ERROR = "No se encontro ningun registro";
 
 
 }

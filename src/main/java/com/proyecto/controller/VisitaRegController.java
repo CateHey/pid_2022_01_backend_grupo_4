@@ -71,7 +71,7 @@ public class VisitaRegController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_EXITO);
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_ERROR);
 		}
 		return ResponseEntity.ok(salida);
 	}

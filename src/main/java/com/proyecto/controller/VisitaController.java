@@ -74,7 +74,29 @@ public class VisitaController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_EXITO);
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_ERROR);
+		}
+		return ResponseEntity.ok(salida);
+	}
+	
+	@GetMapping("/listaVisitaPorDniNom")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> listaVisitaPorDniNom(
+	@RequestParam(name = "dni_vis", required = false, defaultValue = "") String dni_vis, 
+	@RequestParam(name = "nom_vis", required = false, defaultValue = "") String nom_vis ) 
+	{
+		Map<String, Object> salida = new HashMap<>();
+		try {
+			List<Visita> lista = visitaService.listaVisitaPorDniNom(dni_vis, nom_vis);
+			if (CollectionUtils.isEmpty(lista)) {
+				salida.put("mensaje", "No existen datos para mostrar");
+			}else {
+				salida.put("lista", lista);
+				salida.put("mensaje", "Existen " + lista.size() + " elementos para mostrar");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_ERROR);
 		}
 		return ResponseEntity.ok(salida);
 	}
