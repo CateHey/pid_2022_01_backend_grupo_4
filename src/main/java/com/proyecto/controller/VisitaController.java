@@ -25,7 +25,6 @@ import com.proyecto.util.AppSettings;
 @RestController
 @RequestMapping("/rest/visita")
 @CrossOrigin(origins =AppSettings.URL_CROSS_ORIGIN)
-
 public class VisitaController {
 	
 	@Autowired

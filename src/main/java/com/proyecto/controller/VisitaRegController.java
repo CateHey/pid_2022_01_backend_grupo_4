@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
@@ -18,8 +17,6 @@ import com.proyecto.util.AppSettings;
 @RequestMapping("/rest/visitareg")
 @CrossOrigin(origins = AppSettings.URL_CROSS_ORIGIN)
 public class VisitaRegController {
-
-
 
 	@Autowired
 	private VisitaRegService visitaregService;
@@ -75,4 +72,27 @@ public class VisitaRegController {
 		}
 		return ResponseEntity.ok(salida);
 	}
+	
+	@PutMapping("/actualizaVisita")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> actualizaVisitaReg(@RequestBody VisitaReg obj) {
+		Map<String, Object> salida = new HashMap<>();
+		try {
+			if (obj.getCod_visreg() == 0) {
+				salida.put("mensaje", "El ID de la visita debe ser diferente cero");
+				return ResponseEntity.ok(salida);
+			}
+			VisitaReg objSalida = visitaregService.insertaActualizaVisitaReg(obj);
+			if(objSalida == null) {
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+			}else {
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_ERROR);
+		}
+		return ResponseEntity.ok(salida);
+	}
+
 }
