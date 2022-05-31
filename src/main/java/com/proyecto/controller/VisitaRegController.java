@@ -34,7 +34,7 @@ public class VisitaRegController {
 		Map<String, Object> salida = new HashMap<>();
 		try {
 			//obj.setFech_ingr_visreg(new Date());
-			obj.setEstado_visreg(0);
+			obj.setEstado_visreg(1);
 			VisitaReg objSalida = visitaregService.insertaActualizaVisitaReg(obj);
 			if(objSalida == null) {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
