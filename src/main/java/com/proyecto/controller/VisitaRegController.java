@@ -33,13 +33,18 @@ public class VisitaRegController {
 	public ResponseEntity<Map<String, Object>> insertaVisitaReg(@RequestBody VisitaReg obj){
 		Map<String, Object> salida = new HashMap<>();
 		try {
-			//obj.setFech_ingr_visreg(new Date());
-			obj.setEstado_visreg(1);
-			VisitaReg objSalida = visitaregService.insertaActualizaVisitaReg(obj);
-			if(objSalida == null) {
-				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
-			}else {
-				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+			//Validar que no exista duplicado del visitante ingresado
+			boolean validar = visitaregService.validarVisitanteActivo(obj.getVisita().getCod_vis());
+			if (validar) {
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_VISITA_DUPLICADO);
+			} else {
+				obj.setEstado_visreg(1);
+				VisitaReg objSalida = visitaregService.insertaActualizaVisitaReg(obj);
+				if(objSalida == null) {
+					salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+				}else {
+					salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

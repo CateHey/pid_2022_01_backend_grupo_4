@@ -28,4 +28,10 @@ public class VisitaRegServiceImpl implements VisitaRegService{
 	public List<VisitaReg> listaVisitaPorNombreDniEstado(String nom_vis, String dni_vis, int estado_visreg) {
 		return repository.listaVisitaPorNombreDniEstado(nom_vis, dni_vis, estado_visreg);
 	}
+	
+	@Override
+	public boolean validarVisitanteActivo(int cod_vis) {
+		List<VisitaReg> lst = repository.validarVisitanteActivo(cod_vis);
+		return lst.size() > 0 ? true : false;
+	}
 }
