@@ -1,5 +1,7 @@
 package com.proyecto.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyecto.entidad.Boleta;
 import com.proyecto.entidad.Mascota;
 import com.proyecto.service.BoletaService;
+import com.proyecto.util.GenerarFechas;
 
 @RestController
 @RequestMapping("/rest/boleta")
@@ -26,6 +29,7 @@ public class BoletaCotroller {
 	
 	@Autowired
 	private BoletaService boletaService;
+	
 	
 	@GetMapping
     @ResponseBody
@@ -40,15 +44,24 @@ public class BoletaCotroller {
     public ResponseEntity<Map<String, Object>> insertaBoleta(@RequestBody Boleta obj) {
         Map<String, Object> salida = new HashMap<String,Object>();
         try {
-        	if (obj.getFecha_bol() == null) {
+        	int anho=obj.getAnio();
+    		ArrayList<Date> listaFechas = new ArrayList<Date>() ;  
+    		listaFechas = (ArrayList<Date>) com.proyecto.util.GenerarFechas.listaFechaPago(anho);
+        	for (int i = 0; i < 12; i++) {      		
+        		//SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");        		
+        		obj.setFecha_bol(listaFechas.get(i));
+        		Boleta objSalida = boletaService.insertaActualizaBoleta(obj);    
+        		if (objSalida == null) {
+                    salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+                } else {
+                    salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+                }
+    		}
+        	
+        	/*if (obj.getFecha_bol() == null) {
 				obj.setFecha_bol(new Date());
-			}
-        	Boleta objSalida = boletaService.insertaActualizaBoleta(obj);
-            if (objSalida == null) {
-                salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
-            } else {
-                salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
-            }
+			}*/
+        	
         } catch (Exception e) {
             e.printStackTrace();
             salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);

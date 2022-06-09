@@ -28,7 +28,6 @@ public class Boleta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cod_bol;
-	private int correlativo;
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -40,7 +39,6 @@ public class Boleta {
 	@JoinColumn(name = "cod_prop")
 	private Propietario propietario;
 	
-	private int mes;
 	private int anio;
 
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
@@ -55,14 +53,6 @@ public class Boleta {
 
 	public void setCod_bol(int cod_bol) {
 		this.cod_bol = cod_bol;
-	}
-
-	public int getCorrelativo() {
-		return correlativo;
-	}
-
-	public void setCorrelativo(int correlativo) {
-		this.correlativo = correlativo;
 	}
 
 	public Servicio getServicio() {
@@ -81,13 +71,6 @@ public class Boleta {
 		this.propietario = propietario;
 	}
 
-	public int getMes() {
-		return mes;
-	}
-
-	public void setMes(int mes) {
-		this.mes = mes;
-	}
 
 	public int getAnio() {
 		return anio;
