@@ -25,6 +25,13 @@ public class BoletaServiceImpl implements BoletaService{
 		// TODO Auto-generated method stub
 		return repository.save(obj);
 	}
+
+	@Override
+	public List<Boleta> listaBoletaPorNombreDniServicioEstado(String nom_prop, String dni_prop, String nom_serv,
+			int est_bol) {
+		// TODO Auto-generated method stub
+		return repository.listaBoletaPorNombreDniServicioEstado(nom_prop, dni_prop, nom_serv, est_bol);
+	}
 	
 	
 
