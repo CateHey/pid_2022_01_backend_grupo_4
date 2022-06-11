@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -46,6 +47,9 @@ public class Boleta {
 	private Date fecha_bol;
 	
 	private int est_bol;
+	
+	@Transient
+	private String auxCodigo;
 
 	public int getCod_bol() {
 		return cod_bol;
@@ -96,7 +100,12 @@ public class Boleta {
 		this.est_bol = est_bol;
 	}
 	
-	
-	
+	public String getAuxCodigo() {
+		return auxCodigo;
+	}
+
+	public void setAuxCodigo(String auxCodigo) {
+		this.auxCodigo = auxCodigo;
+	}
 	
 }

@@ -1,5 +1,7 @@
 package com.proyecto.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,59 @@ public class BoletaServiceImpl implements BoletaService{
 		return repository.listaBoletaPorNombreDniServicioEstado(nom_prop, dni_prop, nom_serv, est_bol);
 	}
 	
-	
+	@Override
+	public List<Boleta> listaBoletaPorServicioPropietario(int cod_serv, int cod_prop, int anio) {
+		// TODO Auto-generated method stub
+		List<Boleta> lstBoletas = new ArrayList<Boleta>();
+		lstBoletas = repository.listaBoletaPorServicioPropietario(cod_serv, cod_prop, anio);
+		
+		for (Boleta boleta : lstBoletas) {
+			Integer codBol = boleta.getCod_bol();
+			String auxStr = "B" + padLeftZeros(codBol.toString(), 5);			
+			boleta.setAuxCodigo(auxStr);
+		}
+		
+		return lstBoletas;
+	}
 
+	@Override
+	public List<Boleta> obtenerBoletaRegistros(Boleta obj, List<Date> lstFechas) {
+		// TODO Auto-generated method stub
+		List<Boleta> lstRegistros = new ArrayList<Boleta>(); 
+		
+		for (int i = 0; i < lstFechas.size(); i++) {
+			Date fechaMes = lstFechas.get(i);
+			
+    		Boleta nuevo = new Boleta();
+    		nuevo.setServicio(obj.getServicio());
+    		nuevo.setPropietario(obj.getPropietario());
+    		nuevo.setAnio(obj.getAnio());
+    		nuevo.setEst_bol(obj.getEst_bol());
+    		nuevo.setFecha_bol(fechaMes);
+    	
+    		lstRegistros.add(nuevo);
+		}
+		
+		return lstRegistros;
+	}
+	
+	@Override
+	public boolean validarBoletaPendientes(int cod_serv, int cod_prop, int anio) {
+		List<Boleta> lst = repository.listaBoletaPorServicioPropietario(cod_serv, cod_prop, anio);
+		return lst.size() > 0 ? true : false;
+	}
+	
+	private String padLeftZeros(String inputString, int length) {
+	    if (inputString.length() >= length) {
+	        return inputString;
+	    }
+	    StringBuilder sb = new StringBuilder();
+	    while (sb.length() < length - inputString.length()) {
+	        sb.append('0');
+	    }
+	    sb.append(inputString);
+
+	    return sb.toString();
+	}
+	
 }

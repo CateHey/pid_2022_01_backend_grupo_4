@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.entidad.Boleta;
 import com.proyecto.entidad.Mascota;
-import com.proyecto.entidad.VisitaReg;
 import com.proyecto.service.BoletaService;
 import com.proyecto.util.GenerarFechas;
 
@@ -48,27 +47,36 @@ public class BoletaCotroller {
     public ResponseEntity<Map<String, Object>> insertaBoleta(@RequestBody Boleta obj) {
         Map<String, Object> salida = new HashMap<String,Object>();
         try {
-        	int anho=obj.getAnio();
-    		ArrayList<Date> listaFechas = new ArrayList<Date>() ;  
+        	int anho = obj.getAnio();
+    		List<Date> listaFechas = new ArrayList<Date>();  
     		listaFechas = (ArrayList<Date>) com.proyecto.util.GenerarFechas.listaFechaPago(anho);
-        	for (int i = 0; i < 12; i++) {      		
-        		//SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");        		
-        		obj.setFecha_bol(listaFechas.get(i));
-        		Boleta objSalida = boletaService.insertaActualizaBoleta(obj);    
-        		if (objSalida == null) {
-                    salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
-                } else {
-                    salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
-                }
-    		}
-        	
-        	/*if (obj.getFecha_bol() == null) {
-				obj.setFecha_bol(new Date());
-			}*/
-        	
+    		
+    		//Validar que no exista boletas pendientes de pago
+    		boolean validar = boletaService.validarBoletaPendientes(obj.getServicio().getCod_serv(), 
+    				obj.getPropietario().getCod_prop(), obj.getAnio());
+			if (validar) {
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_BOLETA_PENDIENTES);
+				salida.put("mostrar", "NO");
+			} else {
+				List<Boleta> lstBoletas = new ArrayList<Boleta>(); 
+	    		lstBoletas = boletaService.obtenerBoletaRegistros(obj, listaFechas);
+	    		
+	    		for (Boleta boleta : lstBoletas) {
+	    			Boleta objSalida = boletaService.insertaActualizaBoleta(boleta);    
+	        		if (objSalida == null) {
+	                    salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+	                    salida.put("mostrar", "NO");
+	                } else {
+	                    salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+	                    salida.put("mostrar", "SI");
+	                }
+				}
+			}
+
         } catch (Exception e) {
             e.printStackTrace();
             salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+            salida.put("mostrar", "NO");
         }
         return ResponseEntity.ok(salida);
     }
@@ -113,6 +121,28 @@ public class BoletaCotroller {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
 			}else {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_CONSULTA_ERROR);
+		}
+		return ResponseEntity.ok(salida);
+	}
+    
+    @GetMapping("/listaBoletaRegistradas")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> listaBoletaRegistradas(
+			@RequestParam(name = "servicio", required = false, defaultValue = "-1") int cod_serv,
+			@RequestParam(name = "propietario", required = false, defaultValue = "-1") int cod_prop,
+			@RequestParam(name = "anio", required = false, defaultValue = "0000") int anio_bol
+	) {
+		Map<String, Object> salida = new HashMap<>();
+		try {
+			List<Boleta> lista = boletaService.listaBoletaPorServicioPropietario(cod_serv, cod_prop, anio_bol);
+			if (CollectionUtils.isEmpty(lista)) {
+				salida.put("mensaje", "No existen datos para mostrar");
+			}else {
+				salida.put("lista", lista);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
