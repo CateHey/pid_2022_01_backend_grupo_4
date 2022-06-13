@@ -28,6 +28,23 @@ public class BoletaServiceImpl implements BoletaService{
 		return repository.save(obj);
 	}
 	
+	
+
+	@Override
+	public List<Boleta> listaBoletaPorNombreDniServicioEstado(String nom_prop, String dni_prop, String nom_serv,
+			int est_bol) {
+		List<Boleta> lstBoletas1 = new ArrayList<Boleta>();
+		lstBoletas1 = repository.listaBoletaPorNombreDniServicioEstado(nom_prop, dni_prop, nom_serv, est_bol);
+		
+		for (Boleta boleta : lstBoletas1) {
+			Integer codBol = boleta.getCod_bol();
+			String auxStr = "B" + padLeftZeros(codBol.toString(), 5);			
+			boleta.setAuxCodigo(auxStr);
+		}
+		
+		return lstBoletas1;
+	}
+	
 	@Override
 	public List<Boleta> listaBoletaPorServicioPropietario(int cod_serv, int cod_prop, int anio) {
 		// TODO Auto-generated method stub
