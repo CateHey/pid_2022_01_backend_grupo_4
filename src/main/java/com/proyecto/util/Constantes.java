@@ -25,4 +25,6 @@ public class Constantes {
 	public static final String MENSAJE_VISITA_DUPLICADO = "No puede registrar la visita de una persona que aún no sale.";
 	public static final String MENSAJE_BOLETA_PENDIENTES = "No puede registrar nuevas boletas porque aun tiene pendientes por pagar.";
 	
+	public static final String MENSAJE_BOLETA_PAGADA = "Boleta Cancelada";
+	
 }

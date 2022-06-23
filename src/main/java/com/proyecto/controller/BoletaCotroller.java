@@ -120,7 +120,7 @@ public class BoletaCotroller {
 			if(objSalida == null) {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
 			}else {
-				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_BOLETA_PAGADA);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
