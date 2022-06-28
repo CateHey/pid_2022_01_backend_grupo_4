@@ -1,6 +1,5 @@
 package com.proyecto.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -21,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.entidad.Boleta;
-import com.proyecto.entidad.Mascota;
 import com.proyecto.service.BoletaService;
-import com.proyecto.util.GenerarFechas;
 
 @RestController
 @RequestMapping("/rest/boleta")
