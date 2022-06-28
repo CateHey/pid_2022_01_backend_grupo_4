@@ -42,5 +42,55 @@ public class Incidente {
 	private Incidente_Desc incidente_desc;
 
 	private int estado_inc;
+
+	public int getCod_inc() {
+		return cod_inc;
+	}
+
+	public void setCod_inc(int cod_inc) {
+		this.cod_inc = cod_inc;
+	}
+
+	public String getDesc_inc() {
+		return desc_inc;
+	}
+
+	public void setDesc_inc(String desc_inc) {
+		this.desc_inc = desc_inc;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public Edificio getEdificio() {
+		return edificio;
+	}
+
+	public void setEdificio(Edificio edificio) {
+		this.edificio = edificio;
+	}
+
+	public Incidente_Desc getIncidente_desc() {
+		return incidente_desc;
+	}
+
+	public void setIncidente_desc(Incidente_Desc incidente_desc) {
+		this.incidente_desc = incidente_desc;
+	}
+
+	public int getEstado_inc() {
+		return estado_inc;
+	}
+
+	public void setEstado_inc(int estado_inc) {
+		this.estado_inc = estado_inc;
+	}
+	
+	
 	
 }

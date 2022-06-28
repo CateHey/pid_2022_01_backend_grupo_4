@@ -18,8 +18,7 @@ public class Incidente_Desc {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cod_incd;
 	private String nom_incd;
-	
-	public int getCod_serv() {
+	public int getCod_incd() {
 		return cod_incd;
 	}
 	public void setCod_incd(int cod_incd) {
@@ -31,5 +30,7 @@ public class Incidente_Desc {
 	public void setNom_incd(String nom_incd) {
 		this.nom_incd = nom_incd;
 	}
+	
+	
 	
 }
