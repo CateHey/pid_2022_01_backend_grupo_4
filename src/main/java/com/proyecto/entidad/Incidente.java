@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -42,6 +43,9 @@ public class Incidente {
 	private Incidente_Desc incidente_desc;
 
 	private int estado_inc;
+	
+	@Transient
+	private String auxCodigo;
 
 	public int getCod_inc() {
 		return cod_inc;
@@ -91,6 +95,12 @@ public class Incidente {
 		this.estado_inc = estado_inc;
 	}
 	
-	
+	public String getAuxCodigo() {
+		return auxCodigo;
+	}
+
+	public void setAuxCodigo(String auxCodigo) {
+		this.auxCodigo = auxCodigo;
+	}
 	
 }

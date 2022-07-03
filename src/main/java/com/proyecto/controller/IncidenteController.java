@@ -46,21 +46,21 @@ public class IncidenteController {
     public ResponseEntity<Map<String, Object>> insertaIncidente(@RequestBody Incidente obj) {
         Map<String, Object> salida = new HashMap<String,Object>();
         try {
-    		boolean validar = incidenteService.validarIncidentesPendientes(obj.getEdificio().getNom_edi(),obj.getDepartamento().getNum_dep(),
-    				obj.getIncidente_desc().getNom_incd());
+    		boolean validar = incidenteService.validarIncidentesPendientes(obj.getEdificio().getCod_edi(),obj.getDepartamento().getCod_dep(),
+    				obj.getIncidente_desc().getCod_incd());
 			if (validar) {
-				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_BOLETA_PENDIENTES);
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_INCIDENTES_PENDIENTES);
 				salida.put("mostrar", "NO");
 			} else {
-					obj.setEstado_inc(1);
-	    			Incidente objSalida = incidenteService.insertaActualizaIncidentes(obj);    
-	    			if(objSalida == null) {
-						salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
-					}else {
-						salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
-					}
-	    			
-				
+				obj.setEstado_inc(1);
+    			Incidente objSalida = incidenteService.insertaActualizaIncidentes(obj);    
+    			if(objSalida == null) {
+					salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
+					salida.put("mostrar", "NO");
+				}else {
+					salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_EXITOSO);
+					salida.put("mostrar", "SI");
+				}
 			}
 
         } catch (Exception e) {
@@ -75,15 +75,14 @@ public class IncidenteController {
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> listaIncidentePorEdificioDepartamentoEstado(
 
-			@RequestParam(name = "nom_edi", required = false, defaultValue = "") String nom_edi,
-			@RequestParam(name = "num_dep", required = false, defaultValue = "") String num_dep,
+			@RequestParam(name = "cod_edi", required = false, defaultValue = "-1") int cod_edi,
+			@RequestParam(name = "cod_dep", required = false, defaultValue = "-1") int cod_dep,
 			@RequestParam(name = "estado_inc", required = false, defaultValue = "-1") int estado_inc,
-			@RequestParam(name = "nom_incd", required = false, defaultValue = "") String nom_incd
+			@RequestParam(name = "cod_incd", required = false, defaultValue = "-1") int cod_incd
 	) {
 		Map<String, Object> salida = new HashMap<>();
-		//String nom_prop, String dni_prop, String nom_serv, int est_bol
 		try {
-			List<Incidente> lista = incidenteService.listaBoletaPorEdiDepEstCau(nom_edi, num_dep,estado_inc, nom_incd);
+			List<Incidente> lista = incidenteService.listaIncidentePorEdiDepEstCau(cod_edi, cod_dep, estado_inc, cod_incd);
 			if (CollectionUtils.isEmpty(lista)) {
 				salida.put("mensaje", "No existen datos para mostrar");
 			}else {
@@ -110,7 +109,7 @@ public class IncidenteController {
 			if(objSalida == null) {
 				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_REG_ERROR);
 			}else {
-				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_BOLETA_PAGADA);
+				salida.put("mensaje", com.proyecto.util.Constantes.MENSAJE_INCIDENTE_ATENDIDO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
