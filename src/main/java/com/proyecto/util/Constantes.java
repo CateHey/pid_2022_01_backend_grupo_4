@@ -28,4 +28,6 @@ public class Constantes {
 	
 	public static final String MENSAJE_BOLETA_PAGADA = "Boleta Cancelada";
 	
+	public static final String MENSAJE_INCIDENTE_ATENDIDO = "Incidente Atendido";
+	
 }
